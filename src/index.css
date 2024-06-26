@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,21 +17,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
-  margin: 0;
+  background-image: url('background/1Stars.svg');
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  text-align: center;
 }
 
 h1 {
@@ -35,34 +32,45 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.background {
+  position: relative;
+  min-height: 75vh;
+  min-width: 2000px;
+  width: 100%;
+  left: 50%; /* Center the image horizontally */
+  transform: translateX(-50%); /* Center the image horizontally */
+  display: grid;
+  grid-template-areas: "stack";
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.background > * {
+  grid-area: stack;
+}
+
+.background > img {
+  width: 100%;
+}
+
+.stars {
+  z-index: 2;
+}
+
+.planets {
+  z-index: 3;
+}
+
+.mountain1 {
+  z-index: 4;
+}
+
+.mountain2 {
+  z-index: 5;
+}
+
+.crater {
+  z-index: 6;
+}
+
+.sun {
+  z-index: 7;
 }
