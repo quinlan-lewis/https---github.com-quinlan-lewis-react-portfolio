@@ -1,9 +1,11 @@
+import AboutMe from "./AboutMe";
 import Contact from "./Contact";
 import Experience from "./Experience";
-import Projects from "./Portfolio";
+import Projects from "./Projects";
 import NavBar from "./NavBar";
 
 export {
+    AboutMe,
     Contact,
     Experience,
     Projects,

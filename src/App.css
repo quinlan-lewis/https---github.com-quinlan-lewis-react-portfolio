@@ -40,3 +40,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.navbar {
+  color: white;
+}
+
+.section-text {
+  text-white font-bold md:text-[80px] sm:text-[50px] text-[40px];
+}
