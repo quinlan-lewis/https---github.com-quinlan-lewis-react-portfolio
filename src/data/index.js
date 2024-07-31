@@ -1,8 +1,6 @@
 import {
-    brain,
     flightTest,
     reasearchProject,
-    sitlImage
   } from "../assets";
   
   export const navLinks = [
