@@ -10,6 +10,10 @@ export default {
             primary: "#011825"
         }
       },
+      maxHeight: {
+        '80': '80rem',
+        '96': '24rem'
+      }
     },
     plugins: [],
   }

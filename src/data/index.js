@@ -1,6 +1,9 @@
-// import {
-//     profile,
-//   } from "../assets";
+import {
+    brain,
+    flightTest,
+    reasearchProject,
+    sitlImage
+  } from "../assets";
   
   export const navLinks = [
     {
@@ -53,10 +56,23 @@
   
   const projects = [
     {
-      name: "Test Entry",
+      name: "Senior Captone Project - 2022",
       description:
-        "This is a test entry",
-    }
+        [
+          "Lead the implementation of a software controller for an autonomous high endurance UAV system. The goal of this project was to increase the endurance of a UAV system through software only.",
+          "This was achieved by controlling the flight pattern and designing a control system that would minimize power consumption. "
+        ],
+      image: flightTest
+    },
+    {
+    name: "Undergraduate Research Assistant",
+    description:
+      [
+        "During my time as an undergraduate research assistant I helped develop a Unity based Mars rover simulator for use in testing stochastic resonance as a spaceflight coutnermeasure. The findings of which can be found <a style='color: blue;' href='https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1180314/full'>here</a>",
+        "My role on this project was to develop the procedural generation of the testing map."
+      ],
+    image: reasearchProject
+  }
   ];
   
   export { experiences, projects };
