@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import { experiences } from "../data";
+import { fadeIn, textVariant } from "../utils/motion";
 
 const ExperienceCard = ({ experience, onClick, isActive, isMobile }) => {
     return (
@@ -30,8 +33,8 @@ const ExperienceCard = ({ experience, onClick, isActive, isMobile }) => {
 
 const ExperienceDetails = ({ experience }) => {
     return (
-        <div className="mt-5">
-            <ul className="max-w-7xl list-none space-y-8 border-4 lg:border-8 rounded-xl lg:rounded-3xl p-6">
+        <div className="flex mt-5 overflow-y-hidden">
+            <ul className="flex flex-col justify-center max-w-7xl list-none space-y-8 border-4 lg:border-8 rounded-xl lg:rounded-3xl p-6 w-exps h-exps">
                 {experience.details.map((detail, index) => (
                     <li
                         key={`experience-detail-${index}`}
@@ -48,6 +51,17 @@ const Experience = () => {
     const [selectedJob, setSelectedJob] = useState(experiences[0]);
     const [isMobile, setIsMobile] = useState(false);
 
+    const controls = useAnimation();
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+    });
+
+    useEffect(() => {
+        if (inView) {
+            controls.start("show");
+        }
+    }, [controls, inView]);
+
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 640);
@@ -63,27 +77,36 @@ const Experience = () => {
 
     return (
         <div>
-            <h2 className="text-white font-bold md:text-[80px] sm:text-[50px] text-[40px] text-center">
-                Experience
-            </h2>
+            <motion.div ref={ref} animate={controls} initial="hidden" variants={textVariant()}>
+                <h2 className="text-white font-bold md:text-[80px] sm:text-[50px] text-[40px] text-center">
+                    Experience
+                </h2>
+            </motion.div>
 
-            <div className="relative md:p-20 flex flex-col items-center sm:flex-row sm:items-start">
-                <div className="flex flex-col z-10 sm:w-full">
-                    {experiences.map((experience, index) => (
-                        <ExperienceCard
-                            key={`experience-${index}`}
-                            experience={experience}
-                            onClick={() => setSelectedJob(experience)}
-                            isActive={selectedJob === experience}
-                            isMobile={isMobile}
-                        />
-                    ))}
-                </div>
+            <motion.div
+                ref={ref}
+                animate={controls}
+                initial="hidden"
+                variants={fadeIn("up", "easeOut", 0, 0.75)}
+            >
+                <div className="md:p-20 flex flex-col items-center justify-center sm:flex-row">
+                    <div className="flex flex-col z-10">
+                        {experiences.map((experience, index) => (
+                            <ExperienceCard
+                                key={`experience-${index}`}
+                                experience={experience}
+                                onClick={() => setSelectedJob(experience)}
+                                isActive={selectedJob === experience}
+                                isMobile={isMobile}
+                            />
+                        ))}
+                    </div>
 
-                <div className="flex justify-end z-10 sm:block">
-                    <ExperienceDetails experience={selectedJob} />
+                    <div className="flex justify-end z-10 sm:block">
+                        <ExperienceDetails experience={selectedJob} />
+                    </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };

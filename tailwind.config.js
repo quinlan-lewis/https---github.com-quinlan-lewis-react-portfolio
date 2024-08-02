@@ -13,6 +13,24 @@ export default {
       maxHeight: {
         '80': '80rem',
         '96': '24rem'
+      },
+      height : {
+        'exps': '35rem',
+        'img': '35rem',
+        'full': '100%'
+      },
+      width : {
+        'exps': '35rem',
+        'full': '100%'
+      },
+      maxWidth : {
+        'exps': '35rem',
+        'full': '100%'
+      },
+      maxHeight : {
+        'exps': '35rem',
+        'img': '35rem',
+        'full': '100%'
       }
     },
     plugins: [],

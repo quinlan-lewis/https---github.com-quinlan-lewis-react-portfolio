@@ -3,12 +3,15 @@ import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 import { projects } from "../data";
+import { fadeIn, textVariant } from "../utils/motion";
 
 const ProjectCard = ({
     index,
     name,
     description,
     image,
+    width,
+    height
 }) => {
     const controls = useAnimation();
     const { ref, inView } = useInView({
@@ -28,13 +31,14 @@ const ProjectCard = ({
             ref={ref}
             animate={controls}
             initial="hidden"
+            variants={fadeIn("up", "easeOut", 0, 0.75)}
             className={`w-full mt-[-2px] flex flex-col md:flex-row ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-5`}
         >
-            <div className='relative w-full md:w-3/5'>
+            <div className={`relative w-${width}`}>
                 <img
                     src={image}
                     alt='project_image'
-                    className='w-full h-auto object-cover md:rounded-3xl'
+                    className={`w-${width} h-${height} object-cover md:rounded-3xl`}
                 />
             </div>
 
@@ -55,10 +59,23 @@ const ProjectCard = ({
 };
 
 const Projects = () => {
+    const controls = useAnimation();
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+    });
+
+    useEffect(() => {
+        if (inView) {
+            controls.start("show");
+        }
+    }, [controls, inView]);
+
     return (
         <div className='text-center md:text-left md:px-20 lg:px-40'>
-            <motion.div>
-                <h2 className="text-white font-bold md:text-[80px] sm:text-[50px] text-[40px] text-center">Projects</h2>
+            <motion.div ref={ref} animate={controls} initial="hidden" variants={textVariant()}>
+                <h2 className="text-white font-bold md:text-[80px] sm:text-[50px] text-[40px] text-center">
+                    Projects
+                </h2>
             </motion.div>
 
             <div className='mt-10 md:mt-20 flex flex-col gap-10 md:gap-20'>
