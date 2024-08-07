@@ -32,7 +32,7 @@ const ProjectCard = ({
             animate={controls}
             initial="hidden"
             variants={fadeIn("up", "easeOut", 0, 0.75)}
-            className={`w-full mt-[-2px] flex flex-col md:flex-row ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-5`}
+            className={`max-w-large w-full mt-[-2px] flex flex-col md:flex-row ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-5`}
         >
             <div className={`relative w-${width}`}>
                 <img
@@ -78,7 +78,7 @@ const Projects = () => {
                 </h2>
             </motion.div>
 
-            <div className='mt-10 md:mt-20 flex flex-col gap-10 md:gap-20'>
+            <div className='mt-10 md:mt-20 flex flex-col flex-wrap content-center gap-10 md:gap-20 align-middle md:py-8'>
                 {projects.map((project, index) => (
                     <ProjectCard key={`project-${index}`} index={index} {...project} />
                 ))}

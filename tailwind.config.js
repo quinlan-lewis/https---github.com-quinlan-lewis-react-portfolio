@@ -25,7 +25,8 @@ export default {
       },
       maxWidth : {
         'exps': '35rem',
-        'full': '100%'
+        'full': '100%',
+        'large': '1000px'
       },
       maxHeight : {
         'exps': '35rem',

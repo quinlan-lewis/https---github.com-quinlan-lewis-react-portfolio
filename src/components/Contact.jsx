@@ -1,18 +1,19 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import emailjs from '@emailjs/browser';
 
 import { textVariant } from "../utils/motion";
 
 const ContactForm = () => {
     const form = useRef();
 
-    const sendEmail = (e) => {
+    const sendEmail = (e) => {        
         e.preventDefault();
 
         emailjs
-            .sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, {
-                publicKey: 'YOUR_PUBLIC_KEY',
+            .sendForm('contact_service', 'template_mn76i8o', form.current, {
+                publicKey: '',
             })
             .then(
                 () => {
@@ -25,13 +26,14 @@ const ContactForm = () => {
     };
 
     return (
-        <form ref={form} onSubmit={sendEmail} className='mt-12 gap-4 flex flex-col'>
+        <form ref={form} name="contact" onSubmit={sendEmail} className='mt-12 gap-4 flex flex-col'>
             <span className='text-white font-medium mt-3'>Name</span>
-            <input className='bg-tertiary p-4 text-white border font-medium'></input>
+            <input name='from_name' className='bg-tertiary p-4 text-white border font-medium' placeholder="Your Name"></input>
             <span className='text-white font-medium mt-3'>Email</span>
-            <input className='bg-tertiary p-4 text-white border font-medium'></input>
+            <input name='reply_to' className='bg-tertiary p-4 text-white border font-medium' placeholder="YourName123@email.com"></input>
             <span className='text-white font-medium mt-3'>Message</span>
-            <input className='bg-tertiary p-4 text-white border font-medium'></input>
+            <textarea name='message' className='bg-tertiary p-4 text-white border font-medium' rows={10} placeholder="What would you like to say?"></textarea>
+            <input type="submit" value="Submit"></input>
         </form>
     );
 }
