@@ -15,7 +15,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.0",
     "react-tilt": "^1.0.2",
-    "react-vertical-timeline-component": "^3.6.0"
+    "react-vertical-timeline-component": "^3.6.0",
+    "swiper": "^11.1.9"
   },
   "devDependencies": {
     "@react-three/drei": "^9.107.1",
