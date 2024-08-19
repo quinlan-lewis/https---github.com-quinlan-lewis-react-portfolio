@@ -18,32 +18,32 @@ const AboutMe = () => {
             <div id="aboutMe">
                 <h1>About Me</h1>
                 <p>About Me to be filled out...</p>
+                <Swiper
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={'auto'}
+                    coverflowEffect={{
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: true,
+                    }}
+                    pagination={true}
+                    modules={[EffectCoverflow, Pagination]}
+                >
+                    <SwiperSlide>
+                        <img src={brain} />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <img src={reasearchProject} />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <img src={sitlImage} />
+                    </SwiperSlide>
+                </Swiper>
             </div>
-            <Swiper
-                effect={'coverflow'}
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView={'auto'}
-                coverflowEffect={{
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                }}
-                pagination={true}
-                modules={[EffectCoverflow, Pagination]}
-            >
-                <SwiperSlide>
-                    <img src={brain} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={reasearchProject} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={sitlImage} />
-                </SwiperSlide>
-            </Swiper>
         </>
     );
 };

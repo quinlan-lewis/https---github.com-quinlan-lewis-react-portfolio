@@ -6,19 +6,27 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <BrowserRouter>
-      <div className='relative z-0'>
-        <div className='aboutMe-section'>
+      <div className='wrapper'>
+        <header className='header'>
+          <img className='background' src='background/1Stars.svg'/>
+          <img className='background' src='background/2Planets.svg'/>
+          <img className='background' src='background/3Mountain.svg'/>
+          <img className='background' src='background/4Mountain.svg'/>
+          <img className='background' src='background/5Crater.svg'/>
+          <img className='foreground' src='background/6Sun.svg'/>
           <AboutMe />
-        </div>
+        </header>
         {/* Navbar go here */}
-        <div>
+        <section>
           <Experience />
+        </section>
+        <section>
           <Projects />
+        </section>
+        <section>
           <Contact />
-        </div>
+        </section>
       </div>
-    </BrowserRouter>
   )
 }
 
